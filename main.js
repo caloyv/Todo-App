@@ -170,6 +170,7 @@ mainTaskContainer.addEventListener('click',e => {
         let taskInfo = taskValue.textContent
         newTask.value = taskInfo;
         editState = true
+        newTask.focus()
         // console.log(optionParentID)
     }
     if (e.target.textContent == "Delete") {
