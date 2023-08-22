@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>To-do List</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo App</h1>
+        <div class="new-task-container">
+            <input type="text" class="new-task" placeholder="Add a new task">
+        </div>
+        <!-- NAV BAR -->
+        <div class="nav-bar">
+            <div class="nav-left">
+                <div class="nav">
+                    <div class="nav-link">
+                        <p class="all-list-btn blue checked">All</p>
+                    </div>
+                    <div class="nav-link">
+                        <p class="pending-list-btn ">Pending</p>
+                    </div>
+                    <div class="nav-link">
+                        <p class="complete-list">Complete</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="clear-all">Clear All</button>
+            </div>
+        </div>
+
+        <!-- LIST -->
+
+        <div class="tasks-list">
+            <!-- <div class="task-list">
+                <div class="task-container">
+                    <input type="checkbox" name="finished" class="checkbox">
+                    <p class="task"></p>
+                </div>
+                <div class="option-container">
+                    •••
+                    <div class="option hidden">
+                        <p class="edit-btn">Edit</p>
+                        <p class="delete-btn">Delete</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
