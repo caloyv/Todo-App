@@ -10,7 +10,6 @@ export default function navBar (navState, showNewTask) {
         allBtn.classList.add('blue')
         navState[0].state = true
         showNewTask()
-        // console.log(navState)
     })
     pendingBtn.addEventListener('click', () => {
         removeEffect()
@@ -18,7 +17,6 @@ export default function navBar (navState, showNewTask) {
         pendingBtn.classList.add('blue')
         navState[1].state = true
         showNewTask()
-        // console.log(navState)
     })
     completeBtn.addEventListener('click', () => {
         removeEffect()
@@ -26,7 +24,6 @@ export default function navBar (navState, showNewTask) {
         completeBtn.classList.add('blue')
         navState[2].state = true
         showNewTask()
-        // console.log(navState)
     })
 
     function removeEffect() {

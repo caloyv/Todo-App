@@ -33,7 +33,6 @@ body {
     border-radius: 3px;
     position: absolute;
     opacity: 1;
-    transition: all 0.2s;
 }
 
 
@@ -52,9 +51,9 @@ h1 {
     margin: auto;
     margin-top: 50px;
     background-color: #f5f5f5;
-    width: 370px;
+    width: 450px;
     border-radius: 2px;
-    box-shadow: 3px 2px 22px 1px rgba(0,0,0,0.48);
+    box-shadow: 1px 1px 22px 1px rgba(0,0,0,0.48);
 
 }
 
@@ -90,6 +89,11 @@ h1 {
     position: relative;
 }
 
+.nav-link p {
+    transition: color 200ms ease-in;
+
+}
+
 .nav-link::after {
     content: "";
     bottom: -.5rem;
@@ -104,10 +108,7 @@ h1 {
     transition: all 0.2s;
 }
 
-.nav-link:hover::after, 
-.nav-link:focus::after {
-    opacity: 1;
-}
+
 
 
 .all-list-btn:hover, .pending-list-btn:hover, .complete-list:hover {
@@ -128,33 +129,42 @@ h1 {
     background-color: var(--blue);
     color: white;
     cursor: pointer;
+
+    transition: transform 100ms ease-in-out;
 }
 
 .clear-all:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 /* ========= */
 
-.tasks-list {
-    max-height: 400px;
+.task-list-container {
+    max-height: 500px;
     padding: 20px;
-    overflow:auto;
+    overflow: auto;
+    transition: all 300ms;
 }
 
-.tasks-list::-webkit-scrollbar {
-    width: 10px;
+.task-list-container::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
 }
 
-.tasks-list::-webkit-scrollbar-track {
+.task-list-container::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px rgba(0,0,0, .15);
-    /* border-radius: 10px; */
 }
 
-.tasks-list::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0, .2);
-    border-radius: 10px;
-  }
+.task-list-container::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0, .3);
+    border-radius: 5px;
+}
+
+.task-list-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0, .5);
+}
+
+
 
 .task-list {
     display: flex;
@@ -178,11 +188,7 @@ h1 {
 }
 
 .task {
-    width: 100%;
-    max-width: 250px;
-    line-height: 15px;
-    text-overflow: ellipsis;
-    white-space: pre-wrap;
+    flex: 1;
 }
 
 .task.crossed {
@@ -193,12 +199,17 @@ h1 {
 
 .task-container {
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
     gap: 10px;
 }
 
 .task-container input {
     margin-top: 3px;
+}
+
+.new-task:active, .new-task:focus {
+    outline: none;
 }
 
 .new-task-container {
@@ -220,17 +231,17 @@ h1 {
 }
 
 .empty-task {
-    margin: 20;
+    /* margin: ; */
 }
 
 
 /* OPTION */
 
 .option-container {
-    position: relative;
     cursor: pointer;
     display: flex;
     gap: 5px;
+    margin-left: 5px;
 }
 
 
@@ -239,16 +250,6 @@ img {
     height: 20px;
 }
 
-.task-list:only-child .option {
-    top: -20px;
-    right: -20px;
-    transform: scaleX(0)
-}
-
-.task-list:only-child .option.active {
-    transform:scaleX(1);
-    right: 25px;
-}
 
 .edit-btn:hover, .delete-btn:hover {
     background-color: rgba(0,0,0, .15);

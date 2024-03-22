@@ -18,7 +18,7 @@ let navState = [
 navBar(navState, showNewTask);
 
 const newTask = document.querySelector('.new-task')
-const mainTaskContainer = document.querySelector('.tasks-list');
+const mainTaskContainer = document.querySelector('.task-list-container');
 
 if (JSON.parse(localStorage.getItem('tasks')) === null){
     localStorage.setItem('tasks', JSON.stringify([]))
@@ -62,32 +62,32 @@ newTask.addEventListener('keyup', (event) => {
 function showNewTask() {
     let taskVar = ""
     let taskcont = JSON.parse(localStorage.getItem('tasks'))
-    let msg = "You have no task"
+    let msg = "You have no task."
     taskcont.forEach(task => {
         if(navState[0].state){
             taskVar +=`<div class="task-list" id='${task.id}'>
-                        <div class="task-container ">
-                            <input id="${task.id + 1}" type="checkbox" ${task.state === "complete" && "Checked"} name="finished" class="checkbox">
-                            <label for="${task.id + 1}" class="task ${task.state === "complete" && "crossed"}">${task.newTaskInfo}</label>
-                        </div>
-                        <div class="option-container">
-                            <p class="edit-btn"><img src="./edit-btn.png" alt="edit icon"/></p>
-                            <p class="delete-btn"><img src="./delete-btn.png" alt="delete icon"/></p>
-                        </div>
-                    </div>`
+                            <div class="task-container ">
+                                <input id="${task.id + 1}" type="checkbox" ${task.state === "complete" && "Checked"} name="finished" class="checkbox">
+                                <label for="${task.id + 1}" class="task ${task.state === "complete" && "crossed"}">${task.newTaskInfo}</label>
+                            </div>
+                            <div class="option-container">
+                                <p class="edit-btn"><img src="./edit-btn.png" alt="edit icon"/></p>
+                                <p class="delete-btn"><img src="./delete-btn.png" alt="delete icon"/></p>
+                            </div>
+                        </div>`
         }
         else if(navState[1].state){
             if(task.state === "pending"){
             taskVar +=`<div class="task-list" id='${task.id}'>
-                        <div class="task-container ">
-                            <input id="${task.id + 1}" type="checkbox" ${task.state === "complete" && "Checked"} name="finished" class="checkbox">
-                            <label for="${task.id + 1}" class="task ${task.state === "complete" && "crossed"}">${task.newTaskInfo}</label>
-                        </div>
-                        <div class="option-container">
-                            <p class="edit-btn"><img src="./edit-btn.png" alt="edit icon"/></p>
-                            <p class="delete-btn"><img src="./delete-btn.png" alt="delete icon"/></p>
-                        </div>
-                    </div>`
+                            <div class="task-container ">
+                                <input id="${task.id + 1}" type="checkbox" ${task.state === "complete" && "Checked"} name="finished" class="checkbox">
+                                <label for="${task.id + 1}" class="task ${task.state === "complete" && "crossed"}">${task.newTaskInfo}</label>
+                            </div>
+                            <div class="option-container">
+                                <p class="edit-btn"><img src="./edit-btn.png" alt="edit icon"/></p>
+                                <p class="delete-btn"><img src="./delete-btn.png" alt="delete icon"/></p>
+                            </div>
+                        </div>`
                    
             }
             msg = "You have no pending task."
@@ -95,15 +95,15 @@ function showNewTask() {
         else if(navState[2].state){
             if(task.state === "complete"){
             taskVar +=`<div class="task-list" id='${task.id}'>
-                        <div class="task-container ">
-                            <input id="${task.id + 1}" type="checkbox" ${task.state === "complete" && "Checked"} name="finished" class="checkbox">
-                            <label for="${task.id + 1}" class="task ${task.state === "complete" && "crossed"}">${task.newTaskInfo}</label>
-                        </div>
-                        <div class="option-container">
-                            <p class="edit-btn"><img src="./edit-btn.png" alt="edit icon"/></p>
-                            <p class="delete-btn"><img src="./delete-btn.png" alt="delete icon"/></p>
-                        </div>
-                    </div>`
+                            <div class="task-container ">
+                                <input id="${task.id + 1}" type="checkbox" ${task.state === "complete" && "Checked"} name="finished" class="checkbox">
+                                <label for="${task.id + 1}" class="task ${task.state === "complete" && "crossed"}">${task.newTaskInfo}</label>
+                            </div>
+                            <div class="option-container">
+                                <p class="edit-btn"><img src="./edit-btn.png" alt="edit icon"/></p>
+                                <p class="delete-btn"><img src="./delete-btn.png" alt="delete icon"/></p>
+                            </div>
+                        </div>`
             
             }
             msg = "You have no complete task."
@@ -118,6 +118,7 @@ mainTaskContainer.addEventListener('click',e => {
     if (e.target.tagName === "INPUT") {
 
         let parentID = e.target.parentElement.parentElement.id;
+
         if(e.target.checked) {
             e.target.nextSibling.nextSibling.classList.add('crossed')
             tasksLocal.map(task => parentID == task.id ? task.state = "complete": "")
@@ -134,7 +135,6 @@ mainTaskContainer.addEventListener('click',e => {
 
 
     if (e.target.parentElement.className == "edit-btn") {
-        console.log(e.target.className)
         optionParentID = Number(e.target.parentElement.parentElement.parentElement.id)
         taskValue = e.target.parentElement.parentElement.parentElement.children[0].children[1]
         let taskInfo = taskValue.textContent
